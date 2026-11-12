@@ -42,7 +42,6 @@ import org.leavesmc.leaves.protocol.syncmatica.SyncmaticaProtocol;
 import org.leavesmc.leaves.region.IRegionFileFactory;
 import org.leavesmc.leaves.region.RegionFileFormat;
 import org.leavesmc.leaves.region.linear.LinearVersion;
-import org.leavesmc.leaves.util.LeavesUpdateHelper;
 import org.leavesmc.leaves.util.MathUtils;
 import org.leavesmc.leaves.util.McTechnicalModeHelper;
 import org.leavesmc.leaves.util.ServerI18nUtil;
@@ -1033,44 +1032,6 @@ public final class LeavesConfig {
 
     @GlobalConfigCategory("misc")
     public static class MiscConfig {
-
-        public AutoUpdateConfig autoUpdate = new AutoUpdateConfig();
-
-        @GlobalConfigCategory("auto-update")
-        public static class AutoUpdateConfig {
-            @GlobalConfig(value = "enable", lock = true, validator = AutoUpdateValidator.class)
-            public boolean enable = false;
-
-            private static class AutoUpdateValidator extends BooleanConfigValidator {
-                @Override
-                public void runAfterLoader(Boolean value, boolean reload) {
-                    if (!reload) {
-                        LeavesUpdateHelper.init();
-                        if (value) {
-                            LeavesLogger.LOGGER.warning("Auto-Update is not completely safe. Enabling it may cause data security problems!");
-                        }
-                    }
-                }
-            }
-
-            @GlobalConfig(value = "download-source", lock = true, validator = DownloadSourceValidator.class)
-            public String source = "application";
-
-            public static class DownloadSourceValidator extends StringConfigValidator {
-                private static final List<String> suggestSourceList = List.of("application", "cloud");
-
-                @Override
-                public List<String> valueSuggest() {
-                    return suggestSourceList;
-                }
-            }
-
-            @GlobalConfig("allow-experimental")
-            public Boolean allowExperimental = false;
-
-            @GlobalConfig(value = "time", lock = true)
-            public List<String> updateTime = List.of("14:00", "2:00");
-        }
 
         public ExtraYggdrasilConfig yggdrasil = new ExtraYggdrasilConfig();
 

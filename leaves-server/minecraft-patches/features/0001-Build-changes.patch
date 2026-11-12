@@ -26,7 +26,7 @@ index 9243bb11e3f968d0bf0eb2e3dc9295c0232bc15d..9ba90e9e1c6dae13579337edb5a5bede
                  LOGGER.info("This is the first time you're starting this server.");
                  LOGGER.info("It's recommended you read our 'Getting Started' documentation for guidance.");
 -                LOGGER.info("View this and more helpful information here: https://docs.papermc.io/paper/next-steps");
-+                LOGGER.info("View this and more helpful information here: https://docs.leavesmc.org/leaves/guides/next-steps"); // Leaves - change
++                LOGGER.info("View this and more helpful information here: https://github.com/CherriesMC/Cherries#readme"); // Cherries - change
                  LOGGER.info("*************************************************************************************");
              }
              // Paper end - Add onboarding message for initial server start
@@ -64,7 +64,7 @@ index f262a7c5ae4e7d56f16f5c0f4f145a2e428abbe4..a2b69a0cc34adb4d3da00250db8320b2
      // Paper start - Add onboarding message for initial server start
      private JComponent buildOnboardingPanel() {
 -        String onboardingLink = "https://docs.papermc.io/paper/next-steps";
-+        String onboardingLink = "https://docs.leavesmc.org/leaves/guides/next-steps"; // Leaves - change
++        String onboardingLink = "https://github.com/CherriesMC/Cherries#readme"; // Cherries - change
          JPanel jPanel = new JPanel();
  
          javax.swing.JLabel jLabel = new javax.swing.JLabel("If you need help setting up your server you can visit:");

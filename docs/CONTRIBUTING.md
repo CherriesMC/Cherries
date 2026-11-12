@@ -1,7 +1,7 @@
-Contributing to Leaves
+Contributing to Cherries
 ===========
 
-**English** | [中文](https://github.com/LeavesMC/Leaves/blob/master/docs/CONTRIBUTING_cn.md)
+**English** | [中文](CONTRIBUTING_cn.md)
 
 We're glad that you want to contribute to our project!  
 In general, our review of pull requests is very lenient.  
@@ -24,13 +24,13 @@ Before coding, you need these softwares / tools as Dev Environment.
 
 - `git`
 - `JDK 21 or higher`
-  - We used Gradle's toolchains, so you can build Leaves using JRE 8. (When Gradle can't find JDK 21, it will download it automatically.)
+  - We used Gradle's toolchains, so you can build Cherries using JRE 8. (When Gradle can't find JDK 21, it will download it automatically.)
 
 If you're using Windows Operating System, you can use `WSL` to speed up building.
 
 ## Understanding "Patches"
 
-Leaves uses as the same patching system as Paper,  
+Cherries uses as the same patching system as Paper,
 and has been divided into two directories for the purpose of modifying different parts of it:
 
 - `leaves-api` - Modifications to `Paper-API` / `Spigot-API` / `Bukkit`.
@@ -48,7 +48,7 @@ BTW, `leaves-api` and `leaves-server` are not normal git repositories.
 
 - Before applying patches, the base will point to unmodified source code.
 - Every commit after the base is a patch.
-- Only commits after the last commit of Paper will be considered Leaves' patches.
+- Only commits after the last commit of Paper will be considered Cherries' patches.
 
 ## Adding new patches
 

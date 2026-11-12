@@ -101,7 +101,7 @@ index 74ffdc823e66fc5ec027c4b7c462382bcbfe2be2..f38f8e5851ec65a8f3f98018d55de74e
      private static final String ATTRIBUTE_GIT_COMMIT = "Git-Commit";
  
 -    private static final String BRAND_PAPER_NAME = "Paper";
-+    private static final String BRAND_PAPER_NAME = "Leaves"; // Leaves - Paper -> Leaves
++    private static final String BRAND_PAPER_NAME = "Cherries"; // Cherries - Paper -> Cherries
  
      private static final String BUILD_DEV = "DEV";
  
@@ -127,7 +127,7 @@ index 7675acdca2162e403f4ff523bcdd6efe0cb42d49..a950bfb0c6aeb0b19150c59cea133370
                          // Paper start - This is some stupid bullshit
                          System.err.println("*** Warning, you've not updated in a while! ***");
 -                        System.err.println("*** Please download a new build from https://papermc.io/downloads/paper ***");
-+                        System.err.println("*** Please download a new build from https://leavesmc.org/downloads/leaves ***"); // Leaves
++                        System.err.println("*** Please download a new build from https://github.com/CherriesMC/Cherries/releases ***"); // Cherries
                          // Paper end
                      }
                  }
@@ -172,10 +172,10 @@ index c77748061f1c8bb2b0dc8dbd80f608d431752015..7dac2652e3d4964682982e50f533bd4b
                      logger.log(Level.SEVERE, "If you see a world save or edit, then it means you did far more than your server can handle at once");
                      logger.log(Level.SEVERE, "\t If this is the case, consider increasing timeout-time in spigot.yml but note that this will replace the crash with LARGE lag spikes");
 -                    logger.log(Level.SEVERE, "If you are unsure or still think this is a Paper bug, please report this to https://github.com/PaperMC/Paper/issues");
-+                    logger.log(Level.SEVERE, "If you are unsure or still think this is a Paper bug, please report this to https://github.com/LeavesMC/Leaves/issues"); // Leaves
++                    logger.log(Level.SEVERE, "If you are unsure or still think this is a Paper bug, please report this to https://github.com/CherriesMC/Cherries/issues"); // Cherries
                      logger.log(Level.SEVERE, "Be sure to include ALL relevant console errors and Minecraft crash reports");
 -                    logger.log(Level.SEVERE, "Paper version: " + Bukkit.getServer().getVersion());
-+                    logger.log(Level.SEVERE, "Leaves version: " + Bukkit.getServer().getVersion()); // Leaves
++                    logger.log(Level.SEVERE, "Cherries version: " + Bukkit.getServer().getVersion()); // Cherries
  
                      if (net.minecraft.world.level.Level.lastPhysicsProblem != null) {
                          logger.log(Level.SEVERE, "------------------------------");

@@ -1,4 +1,4 @@
-name: Leaves Test CI
+name: Cherries Build CI
 
 on:
   push:
@@ -24,11 +24,11 @@ jobs:
           cache-read-only: false
       - name: Setup Git Config
         run: |
-          git config --global user.email "ci-test@leavesmc.org"
-          git config --global user.name "LeavesMC Test CI"
+          git config --global user.email "ci@cherriesmc.org"
+          git config --global user.name "Cherries CI"
       - name: Apply Patches
         run: ./gradlew applyAllPatches
-      - name: Create Leavesclip Jar
+      - name: Create Cherriesclip Jar
         run: ./gradlew createMojmapLeavesclipJar
       - name: Move Jar
         run: |
@@ -36,7 +36,7 @@ jobs:
             awk -F= -v key="$1" '$1 == key { val = $2; sub(/[[:space:]]*#.*$/, "", val); gsub(/^[[:space:]]+|[[:space:]]+$/, "", val); print val }' gradle.properties
           }
           
-          jarName="leaves-$(prop mcVersion).jar"
+          jarName="cherries-$(prop mcVersion).jar"
           mv leaves-server/build/libs/leaves-leavesclip-"$(prop version)"-mojmap.jar "$jarName"
           echo "jar=$jarName" >> "$GITHUB_ENV"
       - name: Upload Artifact

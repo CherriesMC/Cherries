@@ -6,7 +6,6 @@ import org.leavesmc.leaves.command.subcommands.ConfigCommand;
 import org.leavesmc.leaves.command.subcommands.CounterCommand;
 import org.leavesmc.leaves.command.subcommands.ReloadCommand;
 import org.leavesmc.leaves.command.subcommands.ReportCommand;
-import org.leavesmc.leaves.command.subcommands.UpdateCommand;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -21,7 +20,6 @@ public final class LeavesCommand extends LeavesRootCommand {
     private static final Map<String, LeavesSubcommand> SUBCOMMANDS = Util.make(() -> {
         final Map<Set<String>, LeavesSubcommand> commands = new HashMap<>();
         commands.put(Set.of("config"), new ConfigCommand());
-        commands.put(Set.of("update"), new UpdateCommand());
         commands.put(Set.of("counter"), new CounterCommand());
         commands.put(Set.of("reload"), new ReloadCommand());
         commands.put(Set.of("report"), new ReportCommand());

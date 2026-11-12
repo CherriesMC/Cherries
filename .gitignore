@@ -1,4 +1,8 @@
-.gradle
+# Gradle
+.gradle/
+build/
+**/build/
+!gradle/wrapper/gradle-wrapper.jar
 
 # Eclipse stuff
 .classpath
@@ -12,7 +16,7 @@
 nbproject/
 nbactions.xml
 
-# we use maven!
+# legacy build files
 build.xml
 
 # maven
@@ -23,15 +27,18 @@ dependency-reduced-pom.xml
 .*.sw[a-p]
 
 # various other potential build files
-/build
-*/build/
-bin
-dist
+/bin
+/dist
 manifest.mf
 
 # Mac filesystem dust
-.DS_Store/
 .DS_Store
+.DS_Store/
+
+# Windows filesystem dust
+Thumbs.db
+ehthumbs.db
+Desktop.ini
 
 # intellij
 *.iml
@@ -39,11 +46,27 @@ manifest.mf
 *.iws
 .idea/
 out/
+.factorypath
 
 # Linux temp files
 *~
 
-# other stuff
+# local runtime files
+run/
+logs/
+auto_update/
+*.log
+*.hprof
+hs_err_pid*
+replay_pid*
+
+# secrets and local credentials
+gits.txt
+.env
+.env.*
+*.token
+
+# upstream generated sources
 /leaves-api/build.gradle.kts
 /leaves-server/build.gradle.kts
 /leaves-server/src/minecraft
@@ -51,10 +74,7 @@ out/
 /paper-server
 /paper-api
 
-run
-
 # other sh
 *.sh
 
 !gradle/wrapper/gradle-wrapper.jar
-!scripts/*.sh
