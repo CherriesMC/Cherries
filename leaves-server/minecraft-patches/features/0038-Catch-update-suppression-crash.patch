@@ -144,7 +144,7 @@ index 9b9842462b210b0407279ee8a8e9ccecf3ead005..ba9c8a677c1759e75392344df7877c5f
 +        IllegalArgumentException iae = new IllegalArgumentException("Cannot get property " + property + " as it does not exist in " + this.owner);
 +        if (org.leavesmc.leaves.LeavesConfig.modify.updateSuppressionCrashFix) {
 +            org.leavesmc.leaves.util.UpdateSuppressionException exception = new org.leavesmc.leaves.util.UpdateSuppressionException(null, null, null, null, iae);
-+            if (exception.getStackTrace()[1].getClassName().startsWith("net.minecraft")) {
++            if (iae.getStackTrace()[1].getClassName().startsWith("net.minecraft")) {
 +                throw exception;
 +            }
 +        }
