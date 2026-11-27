@@ -24,6 +24,7 @@ public final class CherriesConfig {
     private static YamlConfiguration config = new YamlConfiguration();
 
     public static final General general = new General();
+    public static final Optimizations optimizations = new Optimizations();
 
     private CherriesConfig() {
     }
@@ -87,6 +88,9 @@ public final class CherriesConfig {
         try {
             config.set("config-version", CURRENT_CONFIG_VERSION);
             config.set("general.check-updates", general.checkUpdates);
+            config.set("optimizations.accelerated-recoiling.enabled", optimizations.acceleratedRecoiling.enabled);
+            config.set("optimizations.accelerated-recoiling.enable-entity-collision", optimizations.acceleratedRecoiling.enableEntityCollision);
+            config.set("optimizations.accelerated-recoiling.full-bounding-box-ladders", optimizations.acceleratedRecoiling.fullBoundingBoxLadders);
             config.save(configFile);
         } catch (final IOException ex) {
             LeavesLogger.LOGGER.severe("Unable to save cherries config", ex);
@@ -95,6 +99,11 @@ public final class CherriesConfig {
 
     private static void read() {
         general.checkUpdates = config.getBoolean("general.check-updates", true);
+
+        final String acceleratedRecoiling = "optimizations.accelerated-recoiling.";
+        optimizations.acceleratedRecoiling.enabled = config.getBoolean(acceleratedRecoiling + "enabled", false);
+        optimizations.acceleratedRecoiling.enableEntityCollision = config.getBoolean(acceleratedRecoiling + "enable-entity-collision", true);
+        optimizations.acceleratedRecoiling.fullBoundingBoxLadders = config.getBoolean(acceleratedRecoiling + "full-bounding-box-ladders", false);
     }
 
     public static YamlConfiguration getConfig() {
@@ -110,6 +119,28 @@ public final class CherriesConfig {
 
         public boolean isCheckUpdates() {
             return checkUpdates;
+        }
+    }
+
+    public static final class Optimizations {
+        public final AcceleratedRecoiling acceleratedRecoiling = new AcceleratedRecoiling();
+
+        public static final class AcceleratedRecoiling {
+            private boolean enabled = false;
+            private boolean enableEntityCollision = true;
+            private boolean fullBoundingBoxLadders = false;
+
+            public boolean isEnabled() {
+                return enabled;
+            }
+
+            public boolean isEnableEntityCollision() {
+                return enableEntityCollision;
+            }
+
+            public boolean isFullBoundingBoxLadders() {
+                return fullBoundingBoxLadders;
+            }
         }
     }
 }

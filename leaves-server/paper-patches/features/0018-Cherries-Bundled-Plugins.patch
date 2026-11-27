@@ -1,0 +1,21 @@
+From 38c2a409acdd9135738d4a065f022feea12615d7 Mon Sep 17 00:00:00 2001
+From: OutHimic <OutHimic@OutLook.com>
+Date: Fri, 27 Nov 2026 21:52:43 +0800
+Subject: [PATCH] Cherries - Bundled Plugins
+
+---
+ src/main/java/org/bukkit/craftbukkit/Main.java | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/main/java/org/bukkit/craftbukkit/Main.java b/src/main/java/org/bukkit/craftbukkit/Main.java
+index e3f75ff68..afef73507 100644
+--- a/src/main/java/org/bukkit/craftbukkit/Main.java
++++ b/src/main/java/org/bukkit/craftbukkit/Main.java
+@@ -247,6 +247,7 @@ public class Main {
+                 System.setProperty("library.jansi.version", "Paper"); // Paper - set meaningless jansi version to prevent git builds from crashing on Windows
+                 System.setProperty("jdk.console", "java.base"); // Paper - revert default console provider back to java.base so we can have our own jline
+ 
++                org.endlessmc.cherries.bootstrap.BundledPlugins.prepare((File) options.valueOf("plugins")); // Cherries - bundled plugins
+                 io.papermc.paper.PaperBootstrap.boot(options);
+             } catch (Throwable t) {
+                 t.printStackTrace();

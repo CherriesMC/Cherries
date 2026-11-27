@@ -67,6 +67,9 @@ public final class CherriesCommand extends Command implements TabExecutor {
                 sender.sendMessage(Component.text("cherries.yml: " + CherriesConfig.getConfigFile(), NamedTextColor.GRAY));
                 sender.sendMessage(Component.text("config-version: " + CherriesConfig.CURRENT_CONFIG_VERSION, NamedTextColor.GRAY));
                 sender.sendMessage(Component.text("general.check-updates: " + CherriesConfig.general.isCheckUpdates(), NamedTextColor.GRAY));
+                sender.sendMessage(Component.text("optimizations.accelerated-recoiling.enabled: " + CherriesConfig.optimizations.acceleratedRecoiling.isEnabled(), NamedTextColor.GRAY));
+                sender.sendMessage(Component.text("optimizations.accelerated-recoiling.enable-entity-collision: " + CherriesConfig.optimizations.acceleratedRecoiling.isEnableEntityCollision(), NamedTextColor.GRAY));
+                sender.sendMessage(Component.text("optimizations.accelerated-recoiling.full-bounding-box-ladders: " + CherriesConfig.optimizations.acceleratedRecoiling.isFullBoundingBoxLadders(), NamedTextColor.GRAY));
             }
             case "version" -> {
                 sender.sendMessage(Component.text("Cherries " + Bukkit.getVersion(), NamedTextColor.GRAY));
