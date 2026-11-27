@@ -5,6 +5,7 @@ import io.papermc.paper.ServerBuildInfo;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.event.ClickEvent;
 import net.kyori.adventure.text.format.NamedTextColor;
+import org.endlessmc.cherries.CherriesConfig;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Optional;
@@ -28,6 +29,10 @@ public class LeavesVersionFetcher extends PaperVersionFetcher {
     @NotNull
     @Override
     public Component getVersionMessage() {
+        if (!CherriesConfig.general.isCheckUpdates()) {
+            return text("Update checking is disabled in cherries.yml", NamedTextColor.GRAY);
+        }
+
         final ServerBuildInfo build = ServerBuildInfo.buildInfo();
         if (build.buildNumber().isEmpty() && build.gitCommit().isEmpty()) {
             return text("You are running a development version without access to version information", color(0xFF5300));

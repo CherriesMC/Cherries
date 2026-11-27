@@ -94,6 +94,12 @@ public final class LeavesConfig {
         GlobalConfigManager.init();
 
         registerCommand("leaves", new LeavesCommand());
+
+        // Cherries start - independent cherries.yml and /cherries command
+        org.endlessmc.cherries.CherriesBootstrap.init(
+            file.toPath().resolveSibling(org.endlessmc.cherries.CherriesConfig.FILE_NAME).toFile()
+        );
+        // Cherries end
     }
 
     public static void reload() {
