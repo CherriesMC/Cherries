@@ -1137,7 +1137,7 @@ public final class LeavesConfig {
         }
 
         @GlobalConfig(value = "server-mod-name")
-        public String serverModName = "Leaves";
+        public String serverModName = "Cherries";
 
         @GlobalConfig("bstats-privacy-mode")
         public boolean bstatsPrivacyMode = false;

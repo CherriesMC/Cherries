@@ -1,7 +1,7 @@
-Contributing to Leaves
+Contributing to Cherries
 ===========
 
-[English](https://github.com/LeavesMC/Leaves/blob/master/docs/CONTRIBUTING.md) | **中文**
+[English](https://github.com/CherriesMC/Cherries/blob/cherries/1.21.8/docs/CONTRIBUTING.md) | **中文**
 
 我们很开心您想为我们的项目做出贡献！一般来说，我们对PR的审核是十分宽松的；
 但是如果您可以遵守下列的规则，我们可以更快地完成审核。
@@ -28,7 +28,7 @@ Contributing to Leaves
 
 ## 了解补丁（Patches）
 
-Leaves 使用和 Paper 一样的补丁系统，并为了针对不同部分的修改分成了两个目录：
+Cherries 使用和 Paper 一样的补丁系统，并为了针对不同部分的修改分成了两个目录：
 
 - `leaves-api` - 对 `Paper-API` / `Spigot-API` / `Bukkit` 进行的修改。
 - `leaves-server` - 对 `Paper`/ `Spigot` / `CraftBukkit` 进行的修改。
@@ -45,7 +45,7 @@ By the way，`leaves-api` 和 `leaves-server` 并不是正常的 git 仓库。
 
 - 在应用补丁前，基点将会指向未被更改的源码
 - 在基点后的每一个提交都是一个补丁
-- 只有在 Paper 最后一个提交后的提交才会被视为 leaves 补丁
+- 只有在 Paper 最后一个提交后的提交才会被视为 Cherries 补丁
 
 ## 增加补丁
 

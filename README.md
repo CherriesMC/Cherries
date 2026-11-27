@@ -1,63 +1,81 @@
-Leaves 
+Cherries
 ===========
 
-[![Leaves CI](https://github.com/LeavesMC/Leaves/actions/workflows/build.yml/badge.svg)](https://github.com/LeavesMC/Leaves/actions/workflows/leaves.yml)
-[![Leaves Download](https://img.shields.io/github/downloads/LeavesMC/Leaves/total?color=0&logo=github)](https://github.com/LeavesMC/Leaves/releases/latest)
-[![Discord](https://badgen.net/discord/online-members/5hgtU72w33?icon=discord&label=Discord&list=what)](https://discord.gg/5hgtU72w33)
-[![QQ](https://img.shields.io/badge/QQ_Unofficial-815857713-blue)](http://qm.qq.com/cgi-bin/qm/qr?_wv=1027&k=nisbmnCFeEJCcYWBQ10th4Fu99XWklH4&authKey=8VlUxSdrFCIwmIpxFQIGR8%2BXvIQ2II%2Bx2JfxuQ8amr9UKgINh%2BdXjudQfc%2FIeTO5&noverify=0&group_code=815857713)
+[![Cherries CI](https://github.com/CherriesMC/Cherries/actions/workflows/build.yml/badge.svg?branch=cherries%2F1.21.8)](https://github.com/CherriesMC/Cherries/actions/workflows/build.yml)
+[![Cherries Download](https://img.shields.io/github/downloads/CherriesMC/Cherries/total?color=0&logo=github)](https://github.com/CherriesMC/Cherries/releases)
+[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](LICENSE.md)
 
 **English** | [中文](README_cn.md)
 
-> Fork of [Paper](https://github.com/PaperMC/Paper) aims at repairing broken vanilla properties.
+> Cherries is a hard fork of [Leaves](https://github.com/LeavesMC/Leaves), which is a fork of [Paper](https://github.com/PaperMC/Paper).
+>
+> CherriesMC is maintained by the EndlessMC server team.
 
-> You can see what we modify and fix at [here](https://docs.leavesmc.org/en/leaves/reference/configuration)
+## What this fork changes
+
+- Keeps the Leaves, Paper and Bukkit plugin APIs working. Package names such as
+  `io.papermc.paper.*` and `org.leavesmc.leaves.*` are intentionally unchanged.
+- Keeps `leaves.yml` and its keys unchanged for existing servers.
+- Adds Cherries-only features and options in a separate `cherries.yml`.
+- Backports selected fixes and carries Cherries-specific optimizations.
+
+The 1.21.8 line is the current target. Upstream Leaves no longer maintains a
+1.21.8 branch, so fixes from newer upstream releases are backported selectively
+instead of merged wholesale.
 
 ## How To (Server Admins)
-Leaves use the same leavesclip(paperclip fork) jar system that Paper uses.
 
-You can download the latest build (1.21.x) of Leaves by going [here](https://github.com/LeavesMC/Leaves/releases/latest)
+Cherries uses the same leavesclip (paperclip fork) distribution system as Paper
+and Leaves.
+
+Download the latest build from the [releases page](https://github.com/CherriesMC/Cherries/releases).
 
 You can also [build it yourself](#building).
 
-You can visit our [documentation](https://docs.leavesmc.org/leaves/guides/getting-started) for more information.
+## How To (Plugin Developers)
 
-## How To (Plugin developers)
-Leaves-API:
-```kotlin
-maven {
-    name = "leavesmc-repo"
-    url = "https://repo.leavesmc.org/snapshots/"
-}
+The runtime API is source-compatible with Leaves. The Java packages are not
+renamed, so existing Leaves, Paper and Bukkit plugins keep working without
+recompilation.
 
-dependencies {
-    compileOnly("org.leavesmc.leaves:leaves-api:1.21.8-R0.1-SNAPSHOT")
-}
- ```
-
-In order to use Leaves as a dependency you must [build it yourself](#building).
-Each time you want to update your dependency, you must re-build Leaves.
-
-Leaves-Server:
-```kotlin
-dependencies {
-    compileOnly("org.leavesmc.leaves:leaves:1.21.8-R0.1-SNAPSHOT")
-}
- ```
+Maven publishing for Cherries is not available yet. Until it is, build the
+server/API locally and use the produced `leaves-api` jar.
 
 ## Building
 
-You need JDK 21 and good Internet conditions
+You need JDK 21 and working access to GitHub/Maven repositories.
 
-Clone this repo, run `./gradlew applyAllPatches`, then run `./gradlew createMojmapLeavesclipJar` in your terminal.  
+```bash
+./gradlew applyAllPatches
+./gradlew createMojmapLeavesclipJar
+```
 
-You can find the jars in the `leaves-server/build/libs` directory.
+The jars are written to `leaves-server/build/libs`. The Gradle module names
+still use the `leaves-*` prefix on purpose; release artifacts are renamed to
+`cherries-*` by CI.
+
+## Compatibility
+
+- Bukkit plugins: supported.
+- Paper plugins: supported.
+- Leaves plugins (`leaves-plugin.json`, including Mixin-based plugins): supported.
+- `leaves.yml`: unchanged; existing files can be reused.
+- `cherries.yml`: Cherries-only options, added incrementally.
+
+## License
+
+Cherries is licensed under the GNU General Public License v3.0, the same
+license as Leaves and Paper. Upstream copyright notices are retained. See
+[LICENSE.md](LICENSE.md). Cherries modifications are source-available under the
+same license.
 
 ## Pull Requests
 
-See [Contributing](docs/CONTRIBUTING.md)
+See [Contributing](docs/CONTRIBUTING.md).
 
 ## Special Thanks To:
 
 [<img src="https://user-images.githubusercontent.com/21148213/121807008-8ffc6700-cc52-11eb-96a7-2f6f260f8fda.png" alt="" width="150">](https://www.jetbrains.com)
 
-[JetBrains](https://www.jetbrains.com/), creators of the IntelliJ IDEA, supports Leaves with one of their [Open Source Licenses](https://www.jetbrains.com/opensource/). Leaves recommend using IntelliJ IDEA as your IDE.
+[JetBrains](https://www.jetbrains.com/), creators of IntelliJ IDEA, supports
+open-source projects with their [Open Source Licenses](https://www.jetbrains.com/opensource/).

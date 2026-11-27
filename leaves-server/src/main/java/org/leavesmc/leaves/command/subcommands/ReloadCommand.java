@@ -12,9 +12,9 @@ public class ReloadCommand implements LeavesSubcommand {
     @Override
     public void execute(CommandSender sender, String subCommand, String[] args) {
         LeavesConfig.reload();
-        sender.sendMessage(text("Leaves config reload complete.", GREEN));
+        sender.sendMessage(text("leaves.yml reload complete.", GREEN));
         Bukkit.getOnlinePlayers().stream().filter(player -> player.hasPermission("leaves.command.config.notify") && player != sender).forEach(
-            player -> player.sendMessage(text("Leaves config reload complete.", GREEN))
+            player -> player.sendMessage(text("leaves.yml reload complete.", GREEN))
         );
     }
 }

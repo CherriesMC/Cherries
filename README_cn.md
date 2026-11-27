@@ -1,62 +1,68 @@
-Leaves
+Cherries
 ===========
 
-[![Leaves CI](https://github.com/LeavesMC/Leaves/actions/workflows/build.yml/badge.svg)](https://github.com/LeavesMC/Leaves/actions/workflows/leaves.yml)
-[![Leaves Download](https://img.shields.io/github/downloads/LeavesMC/Leaves/total?color=0&logo=github)](https://github.com/LeavesMC/Leaves/releases/latest)
-[![Discord](https://badgen.net/discord/online-members/5hgtU72w33?icon=discord&label=Discord&list=what)](https://discord.gg/5hgtU72w33)
-[![QQ](https://img.shields.io/badge/QQ_Unofficial-815857713-blue)](http://qm.qq.com/cgi-bin/qm/qr?_wv=1027&k=nisbmnCFeEJCcYWBQ10th4Fu99XWklH4&authKey=8VlUxSdrFCIwmIpxFQIGR8%2BXvIQ2II%2Bx2JfxuQ8amr9UKgINh%2BdXjudQfc%2FIeTO5&noverify=0&group_code=815857713)
+[![Cherries CI](https://github.com/CherriesMC/Cherries/actions/workflows/build.yml/badge.svg?branch=cherries%2F1.21.8)](https://github.com/CherriesMC/Cherries/actions/workflows/build.yml)
+[![Cherries Download](https://img.shields.io/github/downloads/CherriesMC/Cherries/total?color=0&logo=github)](https://github.com/CherriesMC/Cherries/releases)
+[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](LICENSE.md)
 
 [English](README.md) | **中文**
 
-> 一个致力于修复原版服务端被破坏特性的 [Paper](https://github.com/PaperMC/Paper) 分支
+> Cherries 是 [Leaves](https://github.com/LeavesMC/Leaves) 的硬分叉，Leaves 又是 [Paper](https://github.com/PaperMC/Paper) 的分叉。
+>
+> CherriesMC 由 EndlessMC 服务器团队管理维护。
 
-> 你可以在 [这里](https://docs.leavesmc.org/zh_Hans/leaves/reference/configuration) 查看所有的修改和修复内容
+## 这个分叉做了什么
+
+- 保持 Leaves、Paper、Bukkit 插件 API 可用。`io.papermc.paper.*` 和 `org.leavesmc.leaves.*` 包名刻意不改。
+- 保持 `leaves.yml` 及其键不变，现有服务器可以直接复用。
+- Cherries 专属功能与选项放在独立的 `cherries.yml` 中。
+- 选择性回移上游修复，并携带 Cherries 自己的优化。
+
+当前维护 1.21.8 线。上游 Leaves 已不再维护 1.21.8 分支，因此新版本上游的修复采用按需 backport，而不是整包合并。
 
 ## 对于服务器管理员
-此分支使用与 Paper 一致的 leavesclip(paperclip的分支) 分发
 
-你可以从 [此处](https://github.com/LeavesMC/Leaves/releases/latest) 下载最新的构建结果 (1.21.x)
+Cherries 使用与 Paper、Leaves 相同的 leavesclip（paperclip 分叉）分发方式。
 
-也可以通过 [此处](#自行构建) 的指南自行构建
+请从 [Releases](https://github.com/CherriesMC/Cherries/releases) 下载最新构建。
 
-如果你想要获得更多信息，那么你可以访问我们的 [文档](https://docs.leavesmc.org/zh_Hans/leaves/guides/getting-started)
+也可以通过 [自行构建](#自行构建) 生成。
 
 ## 对于插件开发者
-Leaves-API:
-```kotlin
-maven {
-    name = "leavesmc-repo"
-    url = "https://repo.leavesmc.org/snapshots/"
-}
 
-dependencies {
-    compileOnly("org.leavesmc.leaves:leaves-api:1.21.8-R0.1-SNAPSHOT")
-}
- ```
+运行时 API 与 Leaves 源码兼容，Java 包名没有改动，因此现有的 Leaves、Paper、Bukkit 插件无需重新编译即可继续使用。
 
-如果你要将 Leaves 作为依赖,那么你必须进行 [自行构建](#自行构建)
-
-Leaves-Server:
-```kotlin
-dependencies {
-    compileOnly("org.leavesmc.leaves:leaves:1.21.8-R0.1-SNAPSHOT")
-}
- ```
+Cherries 的 Maven 发布尚未上线。上线前请自行构建服务端/API，并使用生成的 `leaves-api` jar。
 
 ## 自行构建
 
-你需要最低 JDK 21 和一个可以正常访问各种 git/maven 库的网络
+需要 JDK 21，以及可以正常访问 GitHub/Maven 仓库的网络。
 
-首先克隆此储存库，然后在你的终端里依次执行 `./gradlew applyAllPatches` 和 `./gradlew createMojmapLeavesclipJar`
+```bash
+./gradlew applyAllPatches
+./gradlew createMojmapLeavesclipJar
+```
 
-最后 你可以在 `leaves-server/build/libs` 文件夹里找到对应的jar文件
+产物位于 `leaves-server/build/libs`。Gradle 模块名仍保留 `leaves-*` 前缀（为了减少上游同步冲突），CI 会把发布产物重命名为 `cherries-*`。
 
-## 对于想要出一份力的开发者
+## 兼容性
 
-可查看 [贡献须知](docs/CONTRIBUTING_cn.md)
+- Bukkit 插件：支持。
+- Paper 插件：支持。
+- Leaves 插件（`leaves-plugin.json`，包括 Mixin 插件）：支持。
+- `leaves.yml`：保持不变，现有文件可直接使用。
+- `cherries.yml`：Cherries 专属选项，逐步加入。
+
+## 许可证
+
+Cherries 使用 GNU General Public License v3.0，与 Leaves、Paper 相同。上游版权声明保留，详见 [LICENSE.md](LICENSE.md)。Cherries 的修改同样以该许可证开放源代码。
+
+## 贡献
+
+参见 [贡献须知](docs/CONTRIBUTING_cn.md)。
 
 ## 特别感谢
 
 [<img src="https://user-images.githubusercontent.com/21148213/121807008-8ffc6700-cc52-11eb-96a7-2f6f260f8fda.png" alt="" width="150">](https://www.jetbrains.com)
 
-[JetBrains](https://www.jetbrains.com/)，IntelliJ IDEA 的创造者，为 Leaves 提供了 [开源许可证](https://www.jetbrains.com/opensource/)。我们极力推荐使用 IntelliJ IDEA 作为你的 IDE。
+[JetBrains](https://www.jetbrains.com/)，IntelliJ IDEA 的创造者，通过 [开源许可证](https://www.jetbrains.com/opensource/) 支持开源项目。

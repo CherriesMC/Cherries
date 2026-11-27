@@ -10,7 +10,7 @@ public class UpdateCommand implements LeavesSubcommand {
 
     @Override
     public void execute(CommandSender sender, String subCommand, String[] args) {
-        sender.sendMessage(Component.text("Trying to update Leaves, see the console for more info.", NamedTextColor.GRAY));
+        sender.sendMessage(Component.text("Cherries does not support auto-update; download from " + LeavesUpdateHelper.RELEASES_URL, NamedTextColor.GRAY));
         LeavesUpdateHelper.tryUpdateLeaves();
     }
 }

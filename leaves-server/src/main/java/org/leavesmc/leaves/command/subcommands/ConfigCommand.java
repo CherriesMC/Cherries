@@ -21,7 +21,7 @@ public class ConfigCommand implements LeavesSubcommand {
     @Override
     public void execute(CommandSender sender, String subCommand, String[] args) {
         if (args.length < 1) {
-            sender.sendMessage(text("Leaves Config", NamedTextColor.GRAY));
+            sender.sendMessage(text("Cherries Config (leaves.yml)", NamedTextColor.GRAY));
             return;
         }
 

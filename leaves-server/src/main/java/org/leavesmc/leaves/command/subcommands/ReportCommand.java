@@ -39,8 +39,8 @@ import static net.kyori.adventure.text.format.NamedTextColor.RED;
 
 public class ReportCommand implements LeavesSubcommand {
 
-    private static final String BUG_REPORT_URL = "https://github.com/LeavesMC/Leaves/issues/new?template=1-bug-report.yml&leaves-version=${version}&plugin-list=${plugins}%0a%0a${datapacks}";
-    private static final String NOT_VANILLA_URL = "https://github.com/LeavesMC/Leaves/issues/new?template=2-not-vanilla.yml&leaves-version=${version}";
+    private static final String BUG_REPORT_URL = "https://github.com/CherriesMC/Cherries/issues/new?cherries-version=${version}&plugin-list=${plugins}%0a%0a${datapacks}";
+    private static final String NOT_VANILLA_URL = "https://github.com/CherriesMC/Cherries/issues/new?cherries-version=${version}";
     private static final String COMMAND_PERM = "bukkit.command.leaves.report";
 
     private static String generatePluginMessage() {
@@ -72,7 +72,7 @@ public class ReportCommand implements LeavesSubcommand {
         pluginList.append("Server Plugins (%s):".formatted(sizePlugins)).append("\n");
 
         if (!leavesPlugins.isEmpty()) {
-            pluginList.append("Leaves Plugins (%s):".formatted(leavesPlugins.size())).append("\n").append(" -");
+            pluginList.append("Cherries Plugins (%s):".formatted(leavesPlugins.size())).append("\n").append(" -");
             for (final PluginProvider<?> entry : leavesPlugins.values()) {
                 pluginList.append(" ").append(entry.getMeta().getName()).append(",");
             }

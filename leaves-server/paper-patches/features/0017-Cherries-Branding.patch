@@ -1,0 +1,125 @@
+From aaa2c5a8b93879bc22cd065727365df7b3247168 Mon Sep 17 00:00:00 2001
+From: OutHimic <OutHimic@OutLook.com>
+Date: Fri, 27 Nov 2026 12:31:31 +0800
+Subject: [PATCH] Cherries - Branding
+
+---
+ src/main/java/com/destroystokyo/paper/Metrics.java   |  6 +++---
+ .../java/io/papermc/paper/ServerBuildInfoImpl.java   |  2 +-
+ src/main/java/org/bukkit/craftbukkit/Main.java       |  2 +-
+ .../java/org/bukkit/craftbukkit/util/Versioning.java |  2 +-
+ src/main/java/org/spigotmc/WatchdogThread.java       | 12 ++++++------
+ 5 files changed, 12 insertions(+), 12 deletions(-)
+
+diff --git a/src/main/java/com/destroystokyo/paper/Metrics.java b/src/main/java/com/destroystokyo/paper/Metrics.java
+index c7ee6d3a1..813d5b683 100644
+--- a/src/main/java/com/destroystokyo/paper/Metrics.java
++++ b/src/main/java/com/destroystokyo/paper/Metrics.java
+@@ -594,7 +594,7 @@ public class Metrics {
+             // Only start Metrics, if it's enabled in the config
+             if (config.getBoolean("enabled", true)) {
+                 // Leaves start - we have our own bstats page
+-                Metrics metrics = new Metrics("Leaves", serverUUID, logFailedRequests, Bukkit.getLogger());
++                Metrics metrics = new Metrics("Cherries", serverUUID, logFailedRequests, Bukkit.getLogger());
+ 
+                 metrics.addCustomChart(new Metrics.SimplePie("minecraft_version", () -> {
+                     String minecraftVersion = Bukkit.getVersion();
+@@ -602,11 +602,11 @@ public class Metrics {
+                     return minecraftVersion;
+                 }));
+ 
+-                metrics.addCustomChart(new Metrics.SimplePie("leaves_version", () -> {
++                metrics.addCustomChart(new Metrics.SimplePie("cherries_version", () -> {
+                     final String implVersion = org.bukkit.craftbukkit.Main.class.getPackage().getImplementationVersion();
+                     if (implVersion != null) {
+                         final String buildOrHash = implVersion.substring(implVersion.lastIndexOf('-') + 1);
+-                        return "git-Leaves-" + Bukkit.getServer().getMinecraftVersion() + "-" + buildOrHash;
++                        return "git-Cherries-" + Bukkit.getServer().getMinecraftVersion() + "-" + buildOrHash;
+                     }
+                     return "unknown";
+                 }));
+diff --git a/src/main/java/io/papermc/paper/ServerBuildInfoImpl.java b/src/main/java/io/papermc/paper/ServerBuildInfoImpl.java
+index f38f8e585..b186a3046 100644
+--- a/src/main/java/io/papermc/paper/ServerBuildInfoImpl.java
++++ b/src/main/java/io/papermc/paper/ServerBuildInfoImpl.java
+@@ -30,7 +30,7 @@ public record ServerBuildInfoImpl(
+     private static final String ATTRIBUTE_GIT_BRANCH = "Git-Branch";
+     private static final String ATTRIBUTE_GIT_COMMIT = "Git-Commit";
+ 
+-    private static final String BRAND_PAPER_NAME = "Leaves"; // Leaves - Paper -> Leaves
++    private static final String BRAND_PAPER_NAME = "Cherries"; // Cherries - Paper -> Leaves -> Cherries
+ 
+     private static final String BUILD_DEV = "DEV";
+ 
+diff --git a/src/main/java/org/bukkit/craftbukkit/Main.java b/src/main/java/org/bukkit/craftbukkit/Main.java
+index 7f68edab6..e3f75ff68 100644
+--- a/src/main/java/org/bukkit/craftbukkit/Main.java
++++ b/src/main/java/org/bukkit/craftbukkit/Main.java
+@@ -239,7 +239,7 @@ public class Main {
+                     if (buildDate.before(deadline.getTime())) {
+                         // Paper start - This is some stupid bullshit
+                         System.err.println("*** Warning, you've not updated in a while! ***");
+-                        System.err.println("*** Please download a new build from https://leavesmc.org/downloads/leaves ***"); // Leaves
++                        System.err.println("*** Please download a new build from https://github.com/CherriesMC/Cherries/releases ***"); // Cherries
+                         // Paper end
+                     }
+                 }
+diff --git a/src/main/java/org/bukkit/craftbukkit/util/Versioning.java b/src/main/java/org/bukkit/craftbukkit/util/Versioning.java
+index fdef98a77..34e1efaf5 100644
+--- a/src/main/java/org/bukkit/craftbukkit/util/Versioning.java
++++ b/src/main/java/org/bukkit/craftbukkit/util/Versioning.java
+@@ -11,7 +11,7 @@ public final class Versioning {
+     public static String getBukkitVersion() {
+         String result = "Unknown-Version";
+ 
+-        InputStream stream = Bukkit.class.getClassLoader().getResourceAsStream("META-INF/maven/org.leavesmc.leaves/leaves-api/pom.properties"); // Leaves
++        InputStream stream = Bukkit.class.getClassLoader().getResourceAsStream("META-INF/maven/org.endlessmc.cherries/leaves-api/pom.properties"); // Cherries
+         Properties properties = new Properties();
+ 
+         if (stream != null) {
+diff --git a/src/main/java/org/spigotmc/WatchdogThread.java b/src/main/java/org/spigotmc/WatchdogThread.java
+index 7dac2652e..c2cb8a4f5 100644
+--- a/src/main/java/org/spigotmc/WatchdogThread.java
++++ b/src/main/java/org/spigotmc/WatchdogThread.java
+@@ -75,14 +75,14 @@ public class WatchdogThread extends ca.spottedleaf.moonrise.common.util.TickThre
+                 this.lastEarlyWarning = currentTime;
+                 if (isLongTimeout) {
+                     logger.log(Level.SEVERE, "------------------------------");
+-                    logger.log(Level.SEVERE, "The server has stopped responding! This is (probably) not a Leaves bug."); // Paper // Leaves
++                    logger.log(Level.SEVERE, "The server has stopped responding! This is (probably) not a Cherries bug."); // Paper // Cherries
+                     logger.log(Level.SEVERE, "If you see a plugin in the Server thread dump below, then please report it to that author");
+                     logger.log(Level.SEVERE, "\t *Especially* if it looks like HTTP or MySQL operations are occurring");
+                     logger.log(Level.SEVERE, "If you see a world save or edit, then it means you did far more than your server can handle at once");
+                     logger.log(Level.SEVERE, "\t If this is the case, consider increasing timeout-time in spigot.yml but note that this will replace the crash with LARGE lag spikes");
+-                    logger.log(Level.SEVERE, "If you are unsure or still think this is a Paper bug, please report this to https://github.com/LeavesMC/Leaves/issues"); // Leaves
++                    logger.log(Level.SEVERE, "If you are unsure or still think this is a Cherries bug, please report this to https://github.com/CherriesMC/Cherries/issues"); // Cherries
+                     logger.log(Level.SEVERE, "Be sure to include ALL relevant console errors and Minecraft crash reports");
+-                    logger.log(Level.SEVERE, "Leaves version: " + Bukkit.getServer().getVersion()); // Leaves
++                    logger.log(Level.SEVERE, "Cherries version: " + Bukkit.getServer().getVersion()); // Cherries
+ 
+                     if (net.minecraft.world.level.Level.lastPhysicsProblem != null) {
+                         logger.log(Level.SEVERE, "------------------------------");
+@@ -102,12 +102,12 @@ public class WatchdogThread extends ca.spottedleaf.moonrise.common.util.TickThre
+                     }
+                     // Paper end
+                 } else {
+-                    logger.log(Level.SEVERE, "--- DO NOT REPORT THIS TO LEAVES - THIS IS NOT A BUG OR A CRASH  - " + Bukkit.getServer().getVersion() + " ---"); // Leaves
++                    logger.log(Level.SEVERE, "--- DO NOT REPORT THIS TO CHERRIES - THIS IS NOT A BUG OR A CRASH  - " + Bukkit.getServer().getVersion() + " ---"); // Cherries
+                     logger.log(Level.SEVERE, "The server has not responded for " + (currentTime - lastTick) / 1000 + " seconds! Creating thread dump");
+                 }
+                 // Paper end - Different message for short timeout
+                 logger.log(Level.SEVERE, "------------------------------");
+-                logger.log(Level.SEVERE, "Server thread dump (Look for plugins here before reporting to Leaves!):"); // Paper // Leaevs
++                logger.log(Level.SEVERE, "Server thread dump (Look for plugins here before reporting to Cherries!):"); // Paper // Cherries
+                 FeatureHooks.dumpAllChunkLoadInfo(MinecraftServer.getServer(), isLongTimeout); // Paper - log detailed tick information
+                 WatchdogThread.dumpThread(ManagementFactory.getThreadMXBean().getThreadInfo(MinecraftServer.getServer().serverThread.threadId(), Integer.MAX_VALUE), logger);
+                 logger.log(Level.SEVERE, "------------------------------");
+@@ -120,7 +120,7 @@ public class WatchdogThread extends ca.spottedleaf.moonrise.common.util.TickThre
+                         WatchdogThread.dumpThread(thread, logger);
+                     }
+                 } else {
+-                    logger.log(Level.SEVERE, "--- DO NOT REPORT THIS TO LEAVES - THIS IS NOT A BUG OR A CRASH ---"); // Leaevs
++                    logger.log(Level.SEVERE, "--- DO NOT REPORT THIS TO CHERRIES - THIS IS NOT A BUG OR A CRASH ---"); // Cherries
+                 }
+ 
+                 logger.log(Level.SEVERE, "------------------------------");

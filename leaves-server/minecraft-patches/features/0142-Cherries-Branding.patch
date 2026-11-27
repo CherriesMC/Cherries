@@ -1,0 +1,59 @@
+From c7e9f1bac7557d40848f7fe2d49996321973890f Mon Sep 17 00:00:00 2001
+From: OutHimic <OutHimic@OutLook.com>
+Date: Fri, 27 Nov 2026 12:31:31 +0800
+Subject: [PATCH] Cherries - Branding
+
+---
+ net/minecraft/server/MinecraftServer.java           | 4 ++--
+ net/minecraft/server/dedicated/DedicatedServer.java | 2 +-
+ net/minecraft/server/gui/MinecraftServerGui.java    | 2 +-
+ 3 files changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/net/minecraft/server/MinecraftServer.java b/net/minecraft/server/MinecraftServer.java
+index 08253b0..bccc69e 100644
+--- a/net/minecraft/server/MinecraftServer.java
++++ b/net/minecraft/server/MinecraftServer.java
+@@ -1197,7 +1197,7 @@ public abstract class MinecraftServer extends ReentrantBlockableEventLoop<TickTa
+                 LOGGER.info("*************************************************************************************");
+                 LOGGER.info("This is the first time you're starting this server.");
+                 LOGGER.info("It's recommended you read our 'Getting Started' documentation for guidance.");
+-                LOGGER.info("View this and more helpful information here: https://docs.leavesmc.org/leaves/guides/next-steps"); // Leaves - change
++                LOGGER.info("View this and more helpful information here: https://github.com/CherriesMC/Cherries#readme"); // Cherries - change
+                 LOGGER.info("*************************************************************************************");
+             }
+             // Paper end - Add onboarding message for initial server start
+@@ -1872,7 +1872,7 @@ public abstract class MinecraftServer extends ReentrantBlockableEventLoop<TickTa
+ 
+     @DontObfuscate
+     public String getServerModName() {
+-        return org.leavesmc.leaves.LeavesConfig.mics.serverModName; // Leaves - Custom // Paper
++        return org.leavesmc.leaves.LeavesConfig.mics.serverModName; // Cherries - Custom // Paper
+     }
+ 
+     public SystemReport fillSystemReport(SystemReport systemReport) {
+diff --git a/net/minecraft/server/dedicated/DedicatedServer.java b/net/minecraft/server/dedicated/DedicatedServer.java
+index 6a62097..4416025 100644
+--- a/net/minecraft/server/dedicated/DedicatedServer.java
++++ b/net/minecraft/server/dedicated/DedicatedServer.java
+@@ -189,7 +189,7 @@ public class DedicatedServer extends MinecraftServer implements ServerInterface
+         this.getBotList().loadBotInfo(); // Leaves - load resident bot info
+         org.leavesmc.leaves.util.ServerI18nUtil.init(); // Leaves I18n
+ 
+-        com.destroystokyo.paper.Metrics.PaperMetrics.startMetrics(); // Paper - start metrics // Leaves - down
++        // com.destroystokyo.paper.Metrics.PaperMetrics.startMetrics(); // Cherries - metrics disabled
+ 
+         this.setPvpAllowed(properties.pvp);
+         this.setFlightAllowed(properties.allowFlight);
+diff --git a/net/minecraft/server/gui/MinecraftServerGui.java b/net/minecraft/server/gui/MinecraftServerGui.java
+index a2b69a0..0b467e8 100644
+--- a/net/minecraft/server/gui/MinecraftServerGui.java
++++ b/net/minecraft/server/gui/MinecraftServerGui.java
+@@ -183,7 +183,7 @@ public class MinecraftServerGui extends JComponent {
+ 
+     // Paper start - Add onboarding message for initial server start
+     private JComponent buildOnboardingPanel() {
+-        String onboardingLink = "https://docs.leavesmc.org/leaves/guides/next-steps"; // Leaves - change
++        String onboardingLink = "https://github.com/CherriesMC/Cherries#readme"; // Cherries - change
+         JPanel jPanel = new JPanel();
+ 
+         javax.swing.JLabel jLabel = new javax.swing.JLabel("If you need help setting up your server you can visit:");

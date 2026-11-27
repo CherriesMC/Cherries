@@ -9,7 +9,7 @@ public class LeavesLogger extends Logger {
     public static final LeavesLogger LOGGER = new LeavesLogger();
 
     private LeavesLogger() {
-        super("Leaves", null);
+        super("Cherries", null);
         setParent(Bukkit.getLogger());
         setLevel(Level.ALL);
     }

@@ -33,6 +33,6 @@ public final class LeavesCommand extends LeavesRootCommand {
     });
 
     public LeavesCommand() {
-        super("leaves", "Leaves related commands", "bukkit.command.leaves", SUBCOMMANDS);
+        super("leaves", "Cherries/Leaves related commands", "bukkit.command.leaves", SUBCOMMANDS);
     }
 }
